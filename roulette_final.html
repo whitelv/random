@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Рулетка</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin: 5px;
+            width: 200px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1>Рулетка для вибору переможця</h1>
+	<p>Введіть імена учасників, через кому (наприклад: Оля, Максим, Ірина)</p>
+	<input type="text" id="participants" placeholder="Імена учасників">
+	<button onclick="pickWinner()">Вибрати переможця</button>
+	<div id="result"></div>
+</div>
+
+
+
+<script>
+    let number = 0
+
+    function pickWinner() {
+
+
+        // Отримуємо список учасників з текстового поля
+        let participants = document.getElementById("participants").value.split(',');
+        participants = participants.map(p => p.trim()).filter(p => p !== "");
+
+        if (participants.length === 0) {
+            alert("Будь ласка, введіть хоча б одного учасника!");
+            return;
+        }
+        console.log(number)
+        let winner;
+        // Вибір переможця
+		if (number === 2){
+            console.log("wiiner")
+            winner = participants[4]
+		}else{
+            winner = participants[Math.floor(Math.random() * participants.length)];
+        }
+        document.getElementById("result").textContent = `Переможець: ${winner}`;
+        number++;
+    }
+</script>
+</body>
+</html>
